@@ -1,0 +1,406 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "title": "Research Papers",
+      "icon": "Database",
+      "description": "Academic research papers from IEEE, ArXiv, and MDPI journals",
+      "links": [
+        {
+          "title": "IEEE Paper: Document 9826532",
+          "url": "#",
+          "type": "ieee"
+        },
+        {
+          "title": "ArXiv Paper: 2307.00142",
+          "url": "https://arxiv.org/abs/2307.00142",
+          "type": "arxiv"
+        },
+        {
+          "title": "IEEE Paper: Document 10387673",
+          "url": "#",
+          "type": "ieee"
+        },
+        {
+          "title": "ArXiv Paper: 2102.12578",
+          "url": "https://arxiv.org/abs/2102.12578",
+          "type": "arxiv"
+        },
+        {
+          "title": "MDPI Energies Journal Article",
+          "url": "https://www.mdpi.com/journal/energies",
+          "type": "mdpi"
+        },
+        {
+          "title": "ArXiv Paper: 2208.13416",
+          "url": "https://arxiv.org/abs/2208.13416",
+          "type": "arxiv"
+        },
+        {
+          "title": "MDPI Open Access Journals",
+          "url": "https://www.mdpi.com/",
+          "type": "mdpi"
+        },
+        {
+          "title": "ArXiv Paper: 2305.10352v2",
+          "url": "https://arxiv.org/abs/2305.10352v2",
+          "type": "arxiv"
+        },
+        {
+          "title": "IEEE Paper: Document 8470406",
+          "url": "#",
+          "type": "ieee"
+        },
+        {
+          "title": "MDPI Mathematics Journal Article",
+          "url": "https://www.mdpi.com/journal/mathematics",
+          "type": "mdpi"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Solar Production",
+      "icon": "Sun",
+      "description": "Solar generation data and geographical information systems",
+      "links": [
+        {
+          "title": "Photovoltaic Geographical Information System (PVGIS)",
+          "url": "https://re.jrc.ec.europa.eu/pvg_tools/en/",
+          "type": "tool"
+        },
+        {
+          "title": "National Solar Radiation Database (NSRDB) - NREL",
+          "url": "https://nsrdb.nrel.gov/",
+          "type": "database"
+        },
+        {
+          "title": "EMHIRES Solar Generation Time Series",
+          "url": "#",
+          "type": "dataset"
+        },
+        {
+          "title": "Solcast Data Specifications",
+          "url": "https://solcast.com",
+          "type": "specification"
+        },
+        {
+          "title": "NASA POWER Project",
+          "url": "https://power.larc.nasa.gov/",
+          "type": "database"
+        },
+        {
+          "title": "APVI Live Solar PV Map of Australia",
+          "url": "https://pv-map.apvi.org.au/",
+          "type": "tool"
+        },
+        {
+          "title": "PVGIS Downloads",
+          "url": "https://re.jrc.ec.europa.eu/pvg_tools/en/#download",
+          "type": "dataset"
+        },
+        {
+          "title": "Solargis",
+          "url": "https://solargis.com/",
+          "type": "tool"
+        },
+        {
+          "title": "NREL Solar Integration Data",
+          "url": "https://www.nrel.gov/grid/solar-integration-data.html",
+          "type": "dataset"
+        },
+        {
+          "title": "NREL Renewable Energy Integration",
+          "url": "https://www.nrel.gov/research/re-integration.html",
+          "type": "tool"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Energy Consumption",
+      "icon": "Activity",
+      "description": "Residential and commercial energy consumption datasets",
+      "links": [
+        {
+          "title": "EIA Residential Consumption Data 2020",
+          "url": "https://www.eia.gov/consumption/residential/data/2020/",
+          "type": "dataset"
+        },
+        {
+          "title": "EIA Residential Consumption Overview",
+          "url": "https://www.eia.gov/consumption/residential/",
+          "type": "dataset"
+        },
+        {
+          "title": "Building Data Genome 2 - Dataset Information",
+          "url": "https://github.com/buds-lab/building-data-genome-project-2",
+          "type": "dataset"
+        },
+        {
+          "title": "Building Data Genome Project 2 - Kaggle Dataset",
+          "url": "https://www.kaggle.com/datasets/claytonmiller/buildingdatagenomeproject2",
+          "type": "dataset"
+        },
+        {
+          "title": "UK-DALE Disaggregated Dataset",
+          "url": "https://jack-kelly.com/data/",
+          "type": "dataset"
+        },
+        {
+          "title": "Smart Meter Energy Use Data in London Households",
+          "url": "https://data.london.gov.uk/dataset/smartmeter-energy-use-data-in-london-households",
+          "type": "dataset"
+        },
+        {
+          "title": "Electric Power Consumption Dataset - UCI",
+          "url": "https://archive.ics.uci.edu/ml/datasets/individual+household+electric+power+consumption",
+          "type": "dataset"
+        },
+        {
+          "title": "UMass Smart* Dataset",
+          "url": "http://traces.cs.umass.edu/index.php/Smart/Smart",
+          "type": "dataset"
+        },
+        {
+          "title": "Mendeley Data - Energy Dataset",
+          "url": "https://data.mendeley.com/research-data/?search=energy",
+          "type": "dataset"
+        },
+        {
+          "title": "University of Edinburgh DataShare - Energy Data",
+          "url": "https://datashare.ed.ac.uk/handle/10283/2",
+          "type": "dataset"
+        },
+        {
+          "title": "Household Appliances Power Consumption - Kaggle",
+          "url": "https://www.kaggle.com/datasets/search?q=household+appliances+power",
+          "type": "dataset"
+        },
+        {
+          "title": "Energy Consumption Time Series Dataset - Kaggle",
+          "url": "https://www.kaggle.com/datasets/search?q=energy+consumption+time+series",
+          "type": "dataset"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Load Monitoring",
+      "icon": "BarChart2",
+      "description": "NILM datasets and appliance energy usage monitoring",
+      "links": [
+        {
+          "title": "UK-DALE Disaggregated Dataset",
+          "url": "https://jack-kelly.com/data/",
+          "type": "dataset"
+        },
+        {
+          "title": "GitHub: NILM Tools and Resources",
+          "url": "https://github.com/topics/nilm",
+          "type": "tool"
+        },
+        {
+          "title": "SHEd Dataset - NILM",
+          "url": "#",
+          "type": "dataset"
+        },
+        {
+          "title": "Blog Post on NILM",
+          "url": "#",
+          "type": "article"
+        },
+        {
+          "title": "Household Appliances Power Consumption",
+          "url": "https://www.kaggle.com/datasets/category/energy",
+          "type": "dataset"
+        },
+        {
+          "title": "Appliances Energy Prediction Dataset - UCI",
+          "url": "https://archive.ics.uci.edu/ml/datasets/Appliances+energy+prediction",
+          "type": "dataset"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Energy Forecasting",
+      "icon": "LineChart",
+      "description": "Machine learning and forecasting tools for energy data",
+      "links": [
+        {
+          "title": "GitHub: Machine Learning for Solar Energy Prediction",
+          "url": "https://github.com/colbyford/ML_SolarEnergyPrediction",
+          "type": "tool"
+        },
+        {
+          "title": "GitHub: Open-source Power Dataset",
+          "url": "https://github.com/openenergydata",
+          "type": "dataset"
+        },
+        {
+          "title": "GitHub: Pangeo MLData",
+          "url": "https://github.com/pangeo-data/pangeo-ml-data",
+          "type": "tool"
+        },
+        {
+          "title": "Pangeo MLData Platform",
+          "url": "https://pangeo.io/",
+          "type": "tool"
+        },
+        {
+          "title": "GitHub: ClimateSet by RolnickLab",
+          "url": "https://github.com/climatechange-ai/climateset",
+          "type": "dataset"
+        },
+        {
+          "title": "GitHub: Electricity Demand and Price Forecasting",
+          "url": "https://github.com/zafeirisdimi/Energy_Forecasting",
+          "type": "tool"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Smart Meters",
+      "icon": "Gauge",
+      "description": "Smart meter data and implementation resources",
+      "links": [
+        {
+          "title": "Smart Meter Energy Use Data in London",
+          "url": "https://data.london.gov.uk/dataset/smartmeter-energy-use-data-in-london-households",
+          "type": "dataset"
+        },
+        {
+          "title": "CRU: Smart Meters and Services",
+          "url": "https://www.cru.ie/home/smart-meters/",
+          "type": "tool"
+        },
+        {
+          "title": "OpenSynthS GB Smart Meter Synthetic Data",
+          "url": "#",
+          "type": "dataset"
+        },
+        {
+          "title": "Xcel Energy Time-of-Use Electric Rates",
+          "url": "https://www.xcelenergy.com/staticfiles/xe/PDF/Regulatory/CO-Rates-&-Regulations/CO-Rates/psco_elec_entire_tariff.pdf",
+          "type": "specification"
+        },
+        {
+          "title": "Time-of-Use Rates and Home Solar - Palmetto",
+          "url": "https://palmetto.com/learning-center/time-of-use-rates",
+          "type": "article"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Environmental",
+      "icon": "Cloud",
+      "description": "Climate and environmental impact data",
+      "links": [
+        {
+          "title": "International Renewable Energy Agency (IRENA)",
+          "url": "https://www.irena.org/Data",
+          "type": "database"
+        },
+        {
+          "title": "GitHub: ClimateSet by RolnickLab",
+          "url": "https://github.com/climatechange-ai/climateset",
+          "type": "dataset"
+        },
+        {
+          "title": "CDP Data Portal",
+          "url": "https://data.cdp.net/",
+          "type": "database"
+        },
+        {
+          "title": "City and County Energy Profiles",
+          "url": "https://energydata.openei.org/",
+          "type": "database"
+        },
+        {
+          "title": "Data.gov Dataset Catalog",
+          "url": "https://catalog.data.gov/dataset?tags=energy",
+          "type": "database"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Energy Tools",
+      "icon": "Leaf",
+      "description": "Energy data portals and analysis tools",
+      "links": [
+        {
+          "title": "Global Energy Monitor",
+          "url": "https://globalenergymonitor.org/",
+          "type": "tool"
+        },
+        {
+          "title": "Utility Rate Database - OpenEI",
+          "url": "https://openei.org/wiki/Utility_Rate_Database",
+          "type": "database"
+        },
+        {
+          "title": "Better Buildings Solution Center",
+          "url": "https://betterbuildingssolutioncenter.energy.gov/",
+          "type": "tool"
+        },
+        {
+          "title": "NREL Data and Tools",
+          "url": "https://www.nrel.gov/research/data-tools.html",
+          "type": "tool"
+        },
+        {
+          "title": "U.S. Energy Information Administration (EIA)",
+          "url": "https://www.eia.gov/",
+          "type": "database"
+        },
+        {
+          "title": "PG&E Energy Data Request",
+          "url": "https://www.pge.com/en_US/residential/save-energy-money/analyze-your-usage/your-usage/view-and-share-your-data-with-smartmeter/reading-the-smartmeter/sharing-your-usage-data.page",
+          "type": "tool"
+        },
+        {
+          "title": "Southern California Edison (SCE)",
+          "url": "https://www.sce.com/residential/energy-management",
+          "type": "tool"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Building Energy",
+      "icon": "Building2",
+      "description": "Building energy data and efficiency metrics",
+      "links": [
+        {
+          "title": "Better Buildings Solution Center",
+          "url": "https://betterbuildingssolutioncenter.energy.gov/",
+          "type": "tool"
+        },
+        {
+          "title": "Building Data Genome 2",
+          "url": "https://github.com/buds-lab/building-data-genome-project-2",
+          "type": "dataset"
+        },
+        {
+          "title": "NREL Buildings Benchmark",
+          "url": "https://www.nrel.gov/buildings/",
+          "type": "tool"
+        },
+        {
+          "title": "EnergySage - Whole Home Solutions",
+          "url": "https://www.energysage.com/",
+          "type": "tool"
+        },
+        {
+          "title": "GitHub: Intelligent Energy Management System",
+          "url": "https://github.com/topics/energy-management-system",
+          "type": "tool"
+        }
+      ]
+    }
+  ]
+}

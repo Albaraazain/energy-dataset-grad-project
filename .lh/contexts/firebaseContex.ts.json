@@ -1,0 +1,18 @@
+{
+    "sourceFile": "contexts/firebaseContex.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1730137118589,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1730137118589,
+            "name": "Commit-0",
+            "content": "'use client';\r\n\r\nimport React, { createContext, useContext, useEffect, useState } from 'react';\r\nimport { collection, onSnapshot, query } from 'firebase/firestore';\r\nimport { db } from '@/lib/firebase/config';\r\nimport { firestoreDb, categoryConverter } from '@/lib/firebase/firestore';\r\nimport { Category, Link } from '@/types';\r\n\r\ninterface FirebaseContextType {\r\n  categories: Category[];\r\n  loading: boolean;\r\n  error: Error | null;\r\n}\r\n\r\nconst FirebaseContext = createContext<FirebaseContextType>({\r\n  categories: [],\r\n  loading: true,\r\n  error: null,\r\n});\r\n\r\nexport function FirebaseProvider({ children }: { children: React.ReactNode }) {\r\n  const [categories, setCategories] = useState<Category[]>([]);\r\n  const [loading, setLoading] = useState(true);\r\n  const [error, setError] = useState<Error | null>(null);\r\n\r\n  useEffect(() => {\r\n    // Subscribe to categories collection\r\n    const categoriesQuery = query(firestoreDb.categories.getRef());\r\n    \r\n    const unsubscribe = onSnapshot(\r\n      categoriesQuery,\r\n      async (snapshot) => {\r\n        try {\r\n          const categoriesData: Category[] = [];\r\n          \r\n          // Get all categories\r\n          for (const categoryDoc of snapshot.docs) {\r\n            const category = categoryConverter.fromFirestore(categoryDoc, {});\r\n            \r\n            // Get links for this category\r\n            const linksQuery = query(firestoreDb.categories.links.getRef(categoryDoc.id));\r\n            const linksSnapshot = await getDocs(linksQuery);\r\n            \r\n            const links = linksSnapshot.docs.map(linkDoc => ({\r\n              ...linkDoc.data(),\r\n              id: linkDoc.id\r\n            })) as Link[];\r\n            \r\n            categoriesData.push({\r\n              ...category,\r\n              links\r\n            });\r\n          }\r\n          \r\n          setCategories(categoriesData);\r\n          setLoading(false);\r\n        } catch (err) {\r\n          console.error('Error fetching data:', err);\r\n          setError(err instanceof Error ? err : new Error('Unknown error'));\r\n          setLoading(false);\r\n        }\r\n      },\r\n      (err) => {\r\n        console.error('Firestore subscription error:', err);\r\n        setError(err);\r\n        setLoading(false);\r\n      }\r\n    );\r\n\r\n    // Cleanup subscription\r\n    return () => unsubscribe();\r\n  }, []);\r\n\r\n  return (\r\n    <FirebaseContext.Provider value={{ categories, loading, error }}>\r\n      {children}\r\n    </FirebaseContext.Provider>\r\n  );\r\n}\r\n\r\nexport function useFirebase() {\r\n  const context = useContext(FirebaseContext);\r\n  if (context === undefined) {\r\n    throw new Error('useFirebase must be used within a FirebaseProvider');\r\n  }\r\n  return context;\r\n}"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "lib/firestore.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1730136435968,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1730136435968,
+            "name": "Commit-0",
+            "content": "import { db } from './config';\r\nimport { collection, getDocs, doc, setDoc, deleteDoc, onSnapshot } from 'firebase/firestore';\r\nimport { Category } from '@/types';\r\n\r\nconst CATEGORIES_COLLECTION = 'categories';\r\n\r\nexport const firestoreDB = {\r\n  // We'll add methods here in the next step\r\n  categoriesRef: collection(db, CATEGORIES_COLLECTION),\r\n};"
+        }
+    ]
+}

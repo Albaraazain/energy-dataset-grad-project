@@ -1,0 +1,18 @@
+{
+    "sourceFile": "categories.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1730126688196,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1730126688196,
+            "name": "Commit-0",
+            "content": "{\r\n    \"categories\": [\r\n      {\r\n        \"id\": 1,\r\n        \"title\": \"Research Papers\",\r\n        \"icon\": \"Database\",\r\n        \"description\": \"Academic research papers from IEEE, ArXiv, and MDPI journals\",\r\n        \"links\": [\r\n          {\r\n            \"title\": \"IEEE Paper: Document 9826532\",\r\n            \"url\": \"#\",\r\n            \"type\": \"ieee\"\r\n          },\r\n          {\r\n            \"title\": \"ArXiv Paper: 2307.00142\",\r\n            \"url\": \"https://arxiv.org/abs/2307.00142\",\r\n            \"type\": \"arxiv\"\r\n          },\r\n          {\r\n            \"title\": \"IEEE Paper: Document 10387673\",\r\n            \"url\": \"#\",\r\n            \"type\": \"ieee\"\r\n          },\r\n          {\r\n            \"title\": \"ArXiv Paper: 2102.12578\",\r\n            \"url\": \"https://arxiv.org/abs/2102.12578\",\r\n            \"type\": \"arxiv\"\r\n          },\r\n          {\r\n            \"title\": \"MDPI Energies Journal Article\",\r\n            \"url\": \"#\",\r\n            \"type\": \"mdpi\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"id\": 2,\r\n        \"title\": \"Solar Production\",\r\n        \"icon\": \"Sun\",\r\n        \"description\": \"Solar generation data and geographical information systems\",\r\n        \"links\": [\r\n          {\r\n            \"title\": \"Photovoltaic Geographical Information System (PVGIS)\",\r\n            \"url\": \"https://re.jrc.ec.europa.eu/pvg_tools/en/\",\r\n            \"type\": \"tool\"\r\n          },\r\n          {\r\n            \"title\": \"National Solar Radiation Database (NSRDB) - NREL\",\r\n            \"url\": \"https://nsrdb.nrel.gov/\",\r\n            \"type\": \"database\"\r\n          },\r\n          {\r\n            \"title\": \"EMHIRES Solar Generation Time Series\",\r\n            \"url\": \"#\",\r\n            \"type\": \"dataset\"\r\n          },\r\n          {\r\n            \"title\": \"Solcast Data Specifications\",\r\n            \"url\": \"https://solcast.com\",\r\n            \"type\": \"specification\"\r\n          },\r\n          {\r\n            \"title\": \"NASA POWER Project\",\r\n            \"url\": \"https://power.larc.nasa.gov/\",\r\n            \"type\": \"database\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }"
+        }
+    ]
+}

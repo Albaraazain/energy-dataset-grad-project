@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/lib/firebase/config.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1730132203961,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1730132203961,
+            "name": "Commit-0",
+            "content": "import { initializeApp, getApps, FirebaseApp } from 'firebase/app';\r\nimport { getFirestore } from 'firebase/firestore';\r\n\r\nconst firebaseConfig = {\r\n  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,\r\n  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,\r\n  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,\r\n  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,\r\n  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,\r\n  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,\r\n};\r\n\r\n// Initialize Firebase\r\nlet app: FirebaseApp;\r\n\r\nif (!getApps().length) {\r\n  app = initializeApp(firebaseConfig);\r\n} else {\r\n  app = getApps()[0];\r\n}\r\n\r\nexport const db = getFirestore(app);"
+        }
+    ]
+}

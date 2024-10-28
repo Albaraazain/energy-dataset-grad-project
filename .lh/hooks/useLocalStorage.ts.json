@@ -1,0 +1,18 @@
+{
+    "sourceFile": "hooks/useLocalStorage.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1730128488781,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1730128488781,
+            "name": "Commit-0",
+            "content": "import { useState, useEffect } from 'react';\r\nimport categoriesData from '@/data/categories.json';\r\nimport { Category } from '@/types';\r\n\r\nexport function useLocalStorage(key: string, initialValue: Category[]) {\r\n  // Get from local storage then\r\n  // parse stored json or return initialValue\r\n  const readValue = () => {\r\n    // Prevent build error on server\r\n    if (typeof window === 'undefined') {\r\n      return initialValue;\r\n    }\r\n\r\n    try {\r\n      const item = window.localStorage.getItem(key);\r\n      return item ? JSON.parse(item) : initialValue;\r\n    } catch (error) {\r\n      console.warn(`Error reading localStorage key \"${key}\":`, error);\r\n      return initialValue;\r\n    }\r\n  };\r\n\r\n  // State to store our value\r\n  // Pass initial state function to useState so logic is only executed once\r\n  const [storedValue, setStoredValue] = useState<Category[]>(readValue);\r\n\r\n  // Return a wrapped version of useState's setter function that ...\r\n  // ... persists the new value to localStorage.\r\n  const setValue = (value: Category[] | ((val: Category[]) => Category[])) => {\r\n    try {\r\n      // Allow value to be a function so we have same API as useState\r\n      const valueToStore = value instanceof Function ? value(storedValue) : value;\r\n      \r\n      // Save to state\r\n      setStoredValue(valueToStore);\r\n      \r\n      // Save to local storage\r\n      if (typeof window !== 'undefined') {\r\n        window.localStorage.setItem(key, JSON.stringify(valueToStore));\r\n      }\r\n    } catch (error) {\r\n      console.warn(`Error setting localStorage key \"${key}\":`, error);\r\n    }\r\n  };\r\n\r\n  useEffect(() => {\r\n    setStoredValue(readValue());\r\n  }, []);\r\n\r\n  return [storedValue, setValue] as const;\r\n}"
+        }
+    ]
+}

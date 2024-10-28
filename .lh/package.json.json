@@ -1,0 +1,26 @@
+{
+    "sourceFile": "package.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1730125672109,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730128820780,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,11 +11,11 @@\n   \"dependencies\": {\n     \"class-variance-authority\": \"^0.7.0\",\n     \"clsx\": \"^2.1.1\",\n     \"lucide-react\": \"^0.454.0\",\n-    \"next\": \"15.0.1\",\n-    \"react\": \"19.0.0-rc-69d4b800-20241021\",\n-    \"react-dom\": \"19.0.0-rc-69d4b800-20241021\",\n+    \"next\": \"^14.1.0\",\n+    \"react\": \"^18.2.0\",\n+    \"react-dom\": \"^18.2.0\",\n     \"tailwind-merge\": \"^2.5.4\",\n     \"tailwindcss-animate\": \"^1.0.7\"\n   },\n   \"devDependencies\": {\n"
+                },
+                {
+                    "date": 1730130064179,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,16 +8,19 @@\n     \"start\": \"next start\",\n     \"lint\": \"next lint\"\n   },\n   \"dependencies\": {\n+    \"@radix-ui/react-dialog\": \"^1.1.2\",\n+    \"@radix-ui/react-slot\": \"^1.1.0\",\n     \"class-variance-authority\": \"^0.7.0\",\n     \"clsx\": \"^2.1.1\",\n     \"lucide-react\": \"^0.454.0\",\n     \"next\": \"^14.1.0\",\n     \"react\": \"^18.2.0\",\n     \"react-dom\": \"^18.2.0\",\n     \"tailwind-merge\": \"^2.5.4\",\n-    \"tailwindcss-animate\": \"^1.0.7\"\n+    \"tailwindcss-animate\": \"^1.0.7\",\n+    \"date-fns\": \"^2.30.0\"\n   },\n   \"devDependencies\": {\n     \"@shadcn/ui\": \"^0.0.4\",\n     \"@types/node\": \"^20\",\n"
+                }
+            ],
+            "date": 1730125672109,
+            "name": "Commit-0",
+            "content": "{\n  \"name\": \"energy-dataset-grad-project\",\n  \"version\": \"0.1.0\",\n  \"private\": true,\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"start\": \"next start\",\n    \"lint\": \"next lint\"\n  },\n  \"dependencies\": {\n    \"class-variance-authority\": \"^0.7.0\",\n    \"clsx\": \"^2.1.1\",\n    \"lucide-react\": \"^0.454.0\",\n    \"next\": \"15.0.1\",\n    \"react\": \"19.0.0-rc-69d4b800-20241021\",\n    \"react-dom\": \"19.0.0-rc-69d4b800-20241021\",\n    \"tailwind-merge\": \"^2.5.4\",\n    \"tailwindcss-animate\": \"^1.0.7\"\n  },\n  \"devDependencies\": {\n    \"@shadcn/ui\": \"^0.0.4\",\n    \"@types/node\": \"^20\",\n    \"@types/react\": \"^18\",\n    \"@types/react-dom\": \"^18\",\n    \"eslint\": \"^8\",\n    \"eslint-config-next\": \"15.0.1\",\n    \"postcss\": \"^8\",\n    \"tailwindcss\": \"^3.4.1\",\n    \"typescript\": \"^5\"\n  }\n}\n"
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+{
+    "sourceFile": "app/page.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1730125407643,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730128766614,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,8 @@\n-import DatasetPortal from '@/components/DatasetPortal'\r\n-\r\n export default function Home() {\r\n-  return (\r\n-    <main>\r\n-      <DatasetPortal />\r\n-    </main>\r\n-  )\r\n-}\n\\ No newline at end of file\n+    return (\r\n+      <div className=\"p-8\">\r\n+        <h1 className=\"text-4xl font-bold\">Test Page</h1>\r\n+        <p>If you can see this, routing is working!</p>\r\n+      </div>\r\n+    )\r\n+  }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1730129172286,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,5 @@\n+import DatasetPortal from '@/components/DatasetPortal'\r\n+\r\n export default function Home() {\r\n-    return (\r\n-      <div className=\"p-8\">\r\n-        <h1 className=\"text-4xl font-bold\">Test Page</h1>\r\n-        <p>If you can see this, routing is working!</p>\r\n-      </div>\r\n\\ No newline at end of file\n-    )\r\n-  }\n+  return <DatasetPortal />\r\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1730136374700,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,7 @@\n-import DatasetPortal from '@/components/DatasetPortal'\r\n+'use client';\r\n+import { db } from '@/lib/firebase/config';\r\n \r\n export default function Home() {\r\n-  return <DatasetPortal />\r\n+  console.log('Firestore instance:', db);\r\n+  return <div>Testing Firebase Connection</div>;\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1730136769374,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n 'use client';\r\n-import { db } from '@/lib/firebase/config';\r\n+import { db } from '@/lib/config';\r\n \r\n export default function Home() {\r\n   console.log('Firestore instance:', db);\r\n   return <div>Testing Firebase Connection</div>;\r\n"
+                },
+                {
+                    "date": 1730136844281,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n 'use client';\r\n-import { db } from '@/lib/config';\r\n+import { db } from '@/lib/firebase/config';\r\n \r\n export default function Home() {\r\n   console.log('Firestore instance:', db);\r\n   return <div>Testing Firebase Connection</div>;\r\n"
+                },
+                {
+                    "date": 1730137009927,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,6 @@\n-'use client';\r\n-import { db } from '@/lib/firebase/config';\r\n+import DatasetPortal from '@/components/DatasetPortal'\r\n \r\n export default function Home() {\r\n-  console.log('Firestore instance:', db);\r\n-  return <div>Testing Firebase Connection</div>;\r\n\\ No newline at end of file\n-}\n+  return <DatasetPortal />\r\n+}\r\n+\r\n"
+                }
+            ],
+            "date": 1730125407643,
+            "name": "Commit-0",
+            "content": "import DatasetPortal from '@/components/DatasetPortal'\r\n\r\nexport default function Home() {\r\n  return (\r\n    <main>\r\n      <DatasetPortal />\r\n    </main>\r\n  )\r\n}"
+        }
+    ]
+}
