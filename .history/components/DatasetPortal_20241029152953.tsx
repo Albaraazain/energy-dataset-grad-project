@@ -37,7 +37,6 @@ import {
 import { useFirebase } from "@/contexts/FirebaseContext";
 import { useFirebaseOperations } from "@/hooks/useFirebaseOperations";
 import NotesDialog from "./NotesDialog";
-import NotificationMenu from '@/components/NotificationMenu';
 
 const iconMap = {
   Database,
@@ -218,15 +217,8 @@ const DatasetPortal = () => {
   };
 
   const handleDeleteCategory = async (categoryId: string) => {
-    const category = categories.find((c) => c.id.toString() === categoryId);
-    if (!category) return;
-
-    if (
-      window.confirm(
-        `Are you sure you want to delete the category "${category.title}"?`
-      )
-    ) {
-      const success = await deleteCategory(categoryId, category.title);
+    if (window.confirm("Are you sure you want to delete this category?")) {
+      const success = await deleteCategory(categoryId);
       if (success) {
         if (selectedCategory === categoryId) {
           setSelectedCategory(null);
@@ -269,17 +261,9 @@ const DatasetPortal = () => {
   const handleDeleteLink = async (categoryId: string, linkId: string) => {
     if (!selectedCategory) return;
 
-    const category = categories.find((c) => c.id.toString() === categoryId);
-    const link = category?.links.find((l) => l.id === linkId);
-    if (!category || !link) return;
-
-    if (
-      window.confirm(
-        `Are you sure you want to delete the link "${link.title}"?`
-      )
-    ) {
+    if (window.confirm("Are you sure you want to delete this link?")) {
       try {
-        const success = await deleteLink(categoryId, linkId, link.title);
+        const success = await deleteLink(selectedCategory, linkId);
         if (!success) {
           alert("Failed to delete link. Please try again.");
         }

@@ -1,4 +1,3 @@
-// hooks/useFirebaseOperations.ts
 'use client';
 
 import { useState } from 'react';
@@ -9,16 +8,10 @@ import {
   collection,
   doc,
   getDocs,
-  getDoc,
   setDoc
 } from 'firebase/firestore';
 import { firestoreDb, categoryConverter, linkConverter } from '@/lib/firebase/firestore';
 import { Category, Link } from '@/types';
-import {
-  createCategoryNotification,
-  createLinkNotification,
-  createNoteNotification
-} from '@/lib/firebase/notifications';
 
 export function useFirebaseOperations() {
   const [loading, setLoading] = useState(false);
@@ -33,10 +26,6 @@ export function useFirebaseOperations() {
         ...category,
         links: []
       }));
-
-      // Create notification
-      await createCategoryNotification.created(category.title, docRef.id);
-
       setLoading(false);
       return true;
     } catch (err) {
@@ -52,12 +41,6 @@ export function useFirebaseOperations() {
     try {
       const docRef = firestoreDb.categories.getDocRef(categoryId);
       await updateDoc(docRef, categoryConverter.toFirestore(data));
-
-      // Create notification
-      if (data.title) {
-        await createCategoryNotification.updated(data.title, categoryId);
-      }
-
       setLoading(false);
       return true;
     } catch (err) {
@@ -68,15 +51,11 @@ export function useFirebaseOperations() {
     }
   };
 
-  const deleteCategory = async (categoryId: string, categoryTitle: string) => {
+  const deleteCategory = async (categoryId: string) => {
     setLoading(true);
     try {
       const docRef = firestoreDb.categories.getDocRef(categoryId);
       await deleteDoc(docRef);
-
-      // Create notification
-      await createCategoryNotification.deleted(categoryTitle);
-
       setLoading(false);
       return true;
     } catch (err) {
@@ -93,15 +72,6 @@ export function useFirebaseOperations() {
     try {
       const docRef = doc(firestoreDb.categories.links.getRef(categoryId));
       await setDoc(docRef, linkConverter.toFirestore(link));
-
-      // Get category title for notification
-      const categoryDocRef = firestoreDb.categories.getDocRef(categoryId);
-      const categorySnap = await getDoc(categoryDocRef);
-      const categoryTitle = categorySnap.data()?.title || 'Unknown Category';
-
-      // Create notification
-      await createLinkNotification.created(link.title, categoryTitle, categoryId, docRef.id);
-
       setLoading(false);
       return true;
     } catch (err) {
@@ -117,23 +87,6 @@ export function useFirebaseOperations() {
     try {
       const docRef = firestoreDb.categories.links.getDocRef(categoryId, linkId);
       await updateDoc(docRef, linkConverter.toFirestore(data));
-
-      // Get category title for notification
-      const categoryDocRef = firestoreDb.categories.getDocRef(categoryId);
-      const categorySnap = await getDoc(categoryDocRef);
-      const categoryTitle = categorySnap.data()?.title || 'Unknown Category';
-
-      // Create notification
-      if (data.title) {
-        if (data.notes && data.notes.content) {
-          // If notes were updated
-          await createNoteNotification.updated(data.title, categoryTitle, categoryId, linkId);
-        } else {
-          // If only link was updated
-          await createLinkNotification.updated(data.title, categoryTitle, categoryId, linkId);
-        }
-      }
-
       setLoading(false);
       return true;
     } catch (err) {
@@ -144,21 +97,11 @@ export function useFirebaseOperations() {
     }
   };
 
-  const deleteLink = async (categoryId: string, linkId: string, linkTitle: string) => {
+  const deleteLink = async (categoryId: string, linkId: string) => {
     setLoading(true);
     try {
       const docRef = firestoreDb.categories.links.getDocRef(categoryId, linkId);
-      
-      // Get category title for notification
-      const categoryDocRef = firestoreDb.categories.getDocRef(categoryId);
-      const categorySnap = await getDoc(categoryDocRef);
-      const categoryTitle = categorySnap.data()?.title || 'Unknown Category';
-
       await deleteDoc(docRef);
-
-      // Create notification
-      await createLinkNotification.deleted(linkTitle, categoryTitle);
-
       setLoading(false);
       return true;
     } catch (err) {

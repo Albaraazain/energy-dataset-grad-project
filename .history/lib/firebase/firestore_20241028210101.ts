@@ -1,4 +1,3 @@
-// lib/firebase/firestore.ts
 import { 
   collection, 
   doc,
@@ -9,17 +8,13 @@ import {
   query,
   serverTimestamp,
   DocumentReference,
-  CollectionReference,
-  QueryDocumentSnapshot,
-  SnapshotOptions
+  CollectionReference
 } from 'firebase/firestore';
 import { db } from './config';
 import { Category, Link } from '@/types';
-import { Notification } from '@/types/notification';
 
 // Collection names
 const CATEGORIES_COLLECTION = 'categories';
-const NOTIFICATIONS_COLLECTION = 'notifications';
 
 // Types for Firestore
 export interface FirestoreCategory extends Omit<Category, 'id' | 'links'> {
@@ -28,11 +23,6 @@ export interface FirestoreCategory extends Omit<Category, 'id' | 'links'> {
 }
 
 export interface FirestoreLink extends Omit<Link, 'id'> {
-  createdAt?: Date;
-  updatedAt?: Date;
-}
-
-export interface FirestoreNotification extends Omit<Notification, 'id'> {
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -53,17 +43,11 @@ export const firestoreDb = {
     }
   },
 
-  // Notifications
-  notifications: {
-    getRef: () => collection(db, NOTIFICATIONS_COLLECTION),
-    getDocRef: (id: string) => doc(db, NOTIFICATIONS_COLLECTION, id),
-  },
-
   // Helpers for timestamps
-  serverTimestamp,
+  serverTimestamp: serverTimestamp,
 };
 
-// Converters
+// Type guards and converters
 export const categoryConverter = {
   toFirestore: (category: FirestoreCategory) => {
     return {
@@ -72,10 +56,7 @@ export const categoryConverter = {
       createdAt: category.createdAt || firestoreDb.serverTimestamp(),
     };
   },
-  fromFirestore: (
-    snapshot: QueryDocumentSnapshot,
-    options: SnapshotOptions
-  ) => {
+  fromFirestore: (snapshot: any, options: any) => {
     const data = snapshot.data(options);
     return {
       ...data,
@@ -92,30 +73,7 @@ export const linkConverter = {
       createdAt: link.createdAt || firestoreDb.serverTimestamp(),
     };
   },
-  fromFirestore: (
-    snapshot: QueryDocumentSnapshot,
-    options: SnapshotOptions
-  ) => {
-    const data = snapshot.data(options);
-    return {
-      ...data,
-      id: snapshot.id,
-    };
-  },
-};
-
-export const notificationConverter = {
-  toFirestore: (notification: FirestoreNotification) => {
-    return {
-      ...notification,
-      updatedAt: firestoreDb.serverTimestamp(),
-      createdAt: notification.createdAt || firestoreDb.serverTimestamp(),
-    };
-  },
-  fromFirestore: (
-    snapshot: QueryDocumentSnapshot,
-    options: SnapshotOptions
-  ) => {
+  fromFirestore: (snapshot: any, options: any) => {
     const data = snapshot.data(options);
     return {
       ...data,

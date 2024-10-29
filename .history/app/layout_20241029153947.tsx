@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   description: 'Explore comprehensive energy data resources for research and analysis',
 }
 
-// app/layout.tsx
 export default function RootLayout({
   children,
 }: {

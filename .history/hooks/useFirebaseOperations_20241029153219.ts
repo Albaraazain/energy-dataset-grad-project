@@ -9,7 +9,6 @@ import {
   collection,
   doc,
   getDocs,
-  getDoc,
   setDoc
 } from 'firebase/firestore';
 import { firestoreDb, categoryConverter, linkConverter } from '@/lib/firebase/firestore';
@@ -18,7 +17,7 @@ import {
   createCategoryNotification,
   createLinkNotification,
   createNoteNotification
-} from '@/lib/firebase/notifications';
+} from '@/lib/notifications';
 
 export function useFirebaseOperations() {
   const [loading, setLoading] = useState(false);
@@ -95,9 +94,8 @@ export function useFirebaseOperations() {
       await setDoc(docRef, linkConverter.toFirestore(link));
 
       // Get category title for notification
-      const categoryDocRef = firestoreDb.categories.getDocRef(categoryId);
-      const categorySnap = await getDoc(categoryDocRef);
-      const categoryTitle = categorySnap.data()?.title || 'Unknown Category';
+      const categoryDoc = await firestoreDb.categories.getDocRef(categoryId).get();
+      const categoryTitle = categoryDoc.data()?.title || 'Unknown Category';
 
       // Create notification
       await createLinkNotification.created(link.title, categoryTitle, categoryId, docRef.id);
@@ -119,9 +117,8 @@ export function useFirebaseOperations() {
       await updateDoc(docRef, linkConverter.toFirestore(data));
 
       // Get category title for notification
-      const categoryDocRef = firestoreDb.categories.getDocRef(categoryId);
-      const categorySnap = await getDoc(categoryDocRef);
-      const categoryTitle = categorySnap.data()?.title || 'Unknown Category';
+      const categoryDoc = await firestoreDb.categories.getDocRef(categoryId).get();
+      const categoryTitle = categoryDoc.data()?.title || 'Unknown Category';
 
       // Create notification
       if (data.title) {
@@ -150,9 +147,8 @@ export function useFirebaseOperations() {
       const docRef = firestoreDb.categories.links.getDocRef(categoryId, linkId);
       
       // Get category title for notification
-      const categoryDocRef = firestoreDb.categories.getDocRef(categoryId);
-      const categorySnap = await getDoc(categoryDocRef);
-      const categoryTitle = categorySnap.data()?.title || 'Unknown Category';
+      const categoryDoc = await firestoreDb.categories.getDocRef(categoryId).get();
+      const categoryTitle = categoryDoc.data()?.title || 'Unknown Category';
 
       await deleteDoc(docRef);
 

@@ -37,7 +37,7 @@ import {
 import { useFirebase } from "@/contexts/FirebaseContext";
 import { useFirebaseOperations } from "@/hooks/useFirebaseOperations";
 import NotesDialog from "./NotesDialog";
-import NotificationMenu from '@/components/NotificationMenu';
+import NotificationMenu from "./NotificationMenu";
 
 const iconMap = {
   Database,
