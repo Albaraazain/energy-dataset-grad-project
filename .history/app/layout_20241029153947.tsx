@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] }) // Add this line
 
 export const metadata: Metadata = {
   title: 'Energy Dataset Portal',
-  description: 'Explore comprehensive energy data resources for research and analysis',
+  description: 'AI Power Solar Energy Optimization LLM Integration DATASETS - Graduation Project 2024-2025',
 }
 
 export default function RootLayout({

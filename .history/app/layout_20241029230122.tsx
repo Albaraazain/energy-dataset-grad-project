@@ -13,27 +13,18 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        // Prioritize the 32x32 version for desktop browsers
-        url: '/favicon-32x32.png',
-        sizes: '32x32',
-        type: 'image/png',
+        url: '/favicon.ico',
+        sizes: 'any',
       },
       {
-        // Then the 16x16 version as fallback
         url: '/favicon-16x16.png',
         sizes: '16x16',
         type: 'image/png',
       },
       {
-        // Use larger versions for bigger displays
-        url: '/android-chrome-192x192.png',
-        sizes: '192x192',
+        url: '/favicon-32x32.png',
+        sizes: '32x32',
         type: 'image/png',
-      },
-      {
-        // ICO as last fallback
-        url: '/favicon.ico',
-        sizes: 'any',
       },
     ],
     apple: [
@@ -43,6 +34,7 @@ export const metadata: Metadata = {
         type: 'image/png',
       },
     ],
+    // Add Android chrome icons
     other: [
       {
         rel: 'icon',

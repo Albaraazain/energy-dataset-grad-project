@@ -1,0 +1,50 @@
+{
+    "sourceFile": "app/layout.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 8,
+            "patches": [
+                {
+                    "date": 1730125782015,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730128756242,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,10 @@\n import type { Metadata } from 'next'\r\n+import { Inter } from 'next/font/google'\r\n import './globals.css'\r\n \r\n+const inter = Inter({ subsets: ['latin'] })\r\n+\r\n export const metadata: Metadata = {\r\n   title: 'Energy Dataset Portal',\r\n   description: 'Explore comprehensive energy data resources for research and analysis',\r\n }\r\n@@ -12,8 +15,8 @@\n   children: React.ReactNode\r\n }) {\r\n   return (\r\n     <html lang=\"en\">\r\n-      <body>{children}</body>\r\n+      <body className={inter.className}>{children}</body>\r\n     </html>\r\n   )\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1730137171675,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,22 +1,17 @@\n-import type { Metadata } from 'next'\r\n-import { Inter } from 'next/font/google'\r\n-import './globals.css'\r\n+import { FirebaseProvider } from '@/contexts/FirebaseContext';\r\n \r\n-const inter = Inter({ subsets: ['latin'] })\r\n-\r\n-export const metadata: Metadata = {\r\n-  title: 'Energy Dataset Portal',\r\n-  description: 'Explore comprehensive energy data resources for research and analysis',\r\n-}\r\n-\r\n export default function RootLayout({\r\n   children,\r\n }: {\r\n-  children: React.ReactNode\r\n+  children: React.ReactNode;\r\n }) {\r\n   return (\r\n     <html lang=\"en\">\r\n-      <body className={inter.className}>{children}</body>\r\n+      <body className={inter.className}>\r\n+        <FirebaseProvider>\r\n+          {children}\r\n+        </FirebaseProvider>\r\n+      </body>\r\n     </html>\r\n-  )\r\n+  );\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1730137541364,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,20 @@\n-import { FirebaseProvider } from '@/contexts/FirebaseContext';\r\n+import type { Metadata } from 'next'\r\n+import { Inter } from 'next/font/google'\r\n+import './globals.css'\r\n+import { FirebaseProvider } from '@/contexts/FirebaseContext'\r\n \r\n+const inter = Inter({ subsets: ['latin'] }) // Add this line\r\n+\r\n+export const metadata: Metadata = {\r\n+  title: 'Energy Dataset Portal',\r\n+  description: 'Explore comprehensive energy data resources for research and analysis',\r\n+}\r\n+\r\n export default function RootLayout({\r\n   children,\r\n }: {\r\n-  children: React.ReactNode;\r\n+  children: React.ReactNode\r\n }) {\r\n   return (\r\n     <html lang=\"en\">\r\n       <body className={inter.className}>\r\n@@ -12,6 +22,6 @@\n           {children}\r\n         </FirebaseProvider>\r\n       </body>\r\n     </html>\r\n-  );\r\n+  )\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1730204919763,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,11 @@\n   return (\r\n     <html lang=\"en\">\r\n       <body className={inter.className}>\r\n         <FirebaseProvider>\r\n-          {children}\r\n+          <NotificationProvider>\r\n+            {children}\r\n+          </NotificationProvider>\r\n         </FirebaseProvider>\r\n       </body>\r\n     </html>\r\n   )\r\n"
+                },
+                {
+                    "date": 1730205587894,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n import type { Metadata } from 'next'\r\n import { Inter } from 'next/font/google'\r\n import './globals.css'\r\n import { FirebaseProvider } from '@/contexts/FirebaseContext'\r\n+import { NotificationProvider } from '@/contexts/NotificationContext'\r\n \r\n const inter = Inter({ subsets: ['latin'] }) // Add this line\r\n \r\n export const metadata: Metadata = {\r\n"
+                },
+                {
+                    "date": 1730205680397,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,8 +10,9 @@\n   title: 'Energy Dataset Portal',\r\n   description: 'Explore comprehensive energy data resources for research and analysis',\r\n }\r\n \r\n+// app/layout.tsx\r\n export default function RootLayout({\r\n   children,\r\n }: {\r\n   children: React.ReactNode\r\n"
+                },
+                {
+                    "date": 1730231809965,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,16 +3,56 @@\n import './globals.css'\r\n import { FirebaseProvider } from '@/contexts/FirebaseContext'\r\n import { NotificationProvider } from '@/contexts/NotificationContext'\r\n \r\n-const inter = Inter({ subsets: ['latin'] }) // Add this line\r\n+const inter = Inter({ subsets: ['latin'] })\r\n \r\n export const metadata: Metadata = {\r\n   title: 'Energy Dataset Portal',\r\n   description: 'Explore comprehensive energy data resources for research and analysis',\r\n+  manifest: '/site.webmanifest',\r\n+  icons: {\r\n+    icon: [\r\n+      {\r\n+        url: '/favicon.ico',\r\n+        sizes: 'any',\r\n+      },\r\n+      {\r\n+        url: '/favicon-16x16.png',\r\n+        sizes: '16x16',\r\n+        type: 'image/png',\r\n+      },\r\n+      {\r\n+        url: '/favicon-32x32.png',\r\n+        sizes: '32x32',\r\n+        type: 'image/png',\r\n+      },\r\n+    ],\r\n+    apple: [\r\n+      {\r\n+        url: '/apple-touch-icon.png',\r\n+        sizes: '180x180',\r\n+        type: 'image/png',\r\n+      },\r\n+    ],\r\n+    // Add Android chrome icons\r\n+    other: [\r\n+      {\r\n+        rel: 'icon',\r\n+        url: '/android-chrome-192x192.png',\r\n+        sizes: '192x192',\r\n+        type: 'image/png',\r\n+      },\r\n+      {\r\n+        rel: 'icon',\r\n+        url: '/android-chrome-512x512.png',\r\n+        sizes: '512x512',\r\n+        type: 'image/png',\r\n+      },\r\n+    ],\r\n+  },\r\n }\r\n \r\n-// app/layout.tsx\r\n export default function RootLayout({\r\n   children,\r\n }: {\r\n   children: React.ReactNode\r\n"
+                },
+                {
+                    "date": 1730232082897,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,10 +6,10 @@\n \r\n const inter = Inter({ subsets: ['latin'] })\r\n \r\n export const metadata: Metadata = {\r\n-  title: 'Energy Dataset Portal',\r\n-  description: 'Explore comprehensive energy data resources for research and analysis',\r\n+  title: 'Energy Dataset ',\r\n+  description: 'AI Power Solar Energy Optimization LLM Integration DATASETS - Graduation Project 2024-2025',\r\n   manifest: '/site.webmanifest',\r\n   icons: {\r\n     icon: [\r\n       {\r\n"
+                }
+            ],
+            "date": 1730125782015,
+            "name": "Commit-0",
+            "content": "import type { Metadata } from 'next'\r\nimport './globals.css'\r\n\r\nexport const metadata: Metadata = {\r\n  title: 'Energy Dataset Portal',\r\n  description: 'Explore comprehensive energy data resources for research and analysis',\r\n}\r\n\r\nexport default function RootLayout({\r\n  children,\r\n}: {\r\n  children: React.ReactNode\r\n}) {\r\n  return (\r\n    <html lang=\"en\">\r\n      <body>{children}</body>\r\n    </html>\r\n  )\r\n}"
+        }
+    ]
+}

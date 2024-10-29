@@ -37,7 +37,7 @@ import {
 import { useFirebase } from "@/contexts/FirebaseContext";
 import { useFirebaseOperations } from "@/hooks/useFirebaseOperations";
 import NotesDialog from "./NotesDialog";
-import NotificationMenu from "@/components/NotificationMenu";
+import NotificationMenu from '@/components/NotificationMenu';
 
 const iconMap = {
   Database,
@@ -436,8 +436,7 @@ const DatasetPortal = () => {
             Energy Dataset Portal
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed mb-12">
-            AI Solar Energy Optimization LLM Integration DATASETS -
-            Graduation Project 2024-2025
+          AI Power Solar Energy Optimization LLM Integration DATASETS - Graduation Project 2024-2025
           </p>
 
           {/* Search Bar */}

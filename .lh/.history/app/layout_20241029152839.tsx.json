@@ -1,0 +1,18 @@
+{
+    "sourceFile": ".history/app/layout_20241029152839.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1730232235810,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1730232235810,
+            "name": "Commit-0",
+            "content": "import type { Metadata } from 'next'\r\nimport { Inter } from 'next/font/google'\r\nimport './globals.css'\r\nimport { FirebaseProvider } from '@/contexts/FirebaseContext'\r\n\r\nconst inter = Inter({ subsets: ['latin'] }) // Add this line\r\n\r\nexport const metadata: Metadata = {\r\n  title: 'Energy Dataset Portal',\r\n  description: 'AI Power Solar Energy Optimization LLM Integration DATASETS - Graduation Project 2024-2025',\r\n}\r\n\r\nexport default function RootLayout({\r\n  children,\r\n}: {\r\n  children: React.ReactNode\r\n}) {\r\n  return (\r\n    <html lang=\"en\">\r\n      <body className={inter.className}>\r\n        <FirebaseProvider>\r\n          <NotificationProvider>\r\n            {children}\r\n          </NotificationProvider>\r\n        </FirebaseProvider>\r\n      </body>\r\n    </html>\r\n  )\r\n}"
+        }
+    ]
+}

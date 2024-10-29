@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 10,
+            "activePatchIndex": 8,
             "patches": [
                 {
                     "date": 1730125782015,
@@ -40,14 +40,6 @@
                 {
                     "date": 1730232082897,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,10 +6,10 @@\n \r\n const inter = Inter({ subsets: ['latin'] })\r\n \r\n export const metadata: Metadata = {\r\n-  title: 'Energy Dataset Portal',\r\n-  description: 'AI Power Solar Energy Optimization LLM Integration DATASETS - Graduation Project 2024-2025',\r\n+  title: 'Energy Dataset ',\r\n+  description: 'AI Power Solar Energy Optimization LLM Integration DATASETS - Graduation Project 2024-2025',\r\n   manifest: '/site.webmanifest',\r\n   icons: {\r\n     icon: [\r\n       {\r\n"
-                },
-                {
-                    "date": 1730232754489,
-                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,30 +12,38 @@\n   manifest: '/site.webmanifest',\r\n   icons: {\r\n     icon: [\r\n       {\r\n-        url: '/favicon.ico',\r\n-        sizes: 'any',\r\n+        // Prioritize the 32x32 version for desktop browsers\r\n+        url: '/favicon-32x32.png',\r\n+        sizes: '32x32',\r\n+        type: 'image/png',\r\n       },\r\n       {\r\n+        // Then the 16x16 version as fallback\r\n         url: '/favicon-16x16.png',\r\n         sizes: '16x16',\r\n         type: 'image/png',\r\n       },\r\n       {\r\n-        url: '/favicon-32x32.png',\r\n-        sizes: '32x32',\r\n+        // Use larger versions for bigger displays\r\n+        url: '/android-chrome-192x192.png',\r\n+        sizes: '192x192',\r\n         type: 'image/png',\r\n       },\r\n+      {\r\n+        // ICO as last fallback\r\n+        url: '/favicon.ico',\r\n+        sizes: 'any',\r\n+      },\r\n     ],\r\n     apple: [\r\n       {\r\n         url: '/apple-touch-icon.png',\r\n         sizes: '180x180',\r\n         type: 'image/png',\r\n       },\r\n     ],\r\n-    // Add Android chrome icons\r\n     other: [\r\n       {\r\n         rel: 'icon',\r\n         url: '/android-chrome-192x192.png',\r\n@@ -49,23 +57,5 @@\n         type: 'image/png',\r\n       },\r\n     ],\r\n   },\r\n-}\r\n-\r\n-export default function RootLayout({\r\n-  children,\r\n-}: {\r\n-  children: React.ReactNode\r\n-}) {\r\n-  return (\r\n-    <html lang=\"en\">\r\n-      <body className={inter.className}>\r\n-        <FirebaseProvider>\r\n-          <NotificationProvider>\r\n-            {children}\r\n-          </NotificationProvider>\r\n-        </FirebaseProvider>\r\n-      </body>\r\n-    </html>\r\n-  )\r\n }\n\\ No newline at end of file\n"
-                },
-                {
-                    "date": 1730232809482,
-                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -57,5 +57,23 @@\n         type: 'image/png',\r\n       },\r\n     ],\r\n   },\r\n+}\r\n+\r\n+export default function RootLayout({\r\n+  children,\r\n+}: {\r\n+  children: React.ReactNode\r\n+}) {\r\n+  return (\r\n+    <html lang=\"en\">\r\n+      <body className={inter.className}>\r\n+        <FirebaseProvider>\r\n+          <NotificationProvider>\r\n+            {children}\r\n+          </NotificationProvider>\r\n+        </FirebaseProvider>\r\n+      </body>\r\n+    </html>\r\n+  )\r\n }\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1730125782015,

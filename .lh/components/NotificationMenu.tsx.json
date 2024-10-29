@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1730204794742,
@@ -12,6 +12,10 @@
                 {
                     "date": 1730206055478,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,17 @@\n // components/NotificationMenu.tsx\r\n 'use client';\r\n \r\n import React, { useState } from 'react';\r\n-import { Bell, Check, Trash2, CheckCheck } from 'lucide-react';\r\n+import { \r\n+  Bell, \r\n+  Check, \r\n+  Trash2, \r\n+  CheckCheck,\r\n+  Plus,\r\n+  Edit,\r\n+  StickyNote\r\n+} from 'lucide-react';\r\n import { formatDistanceToNow } from 'date-fns';\r\n import { useNotifications } from '@/contexts/NotificationContext';\r\n import { Notification } from '@/types/notification';\r\n \r\n"
+                },
+                {
+                    "date": 1730232373029,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,10 +3,10 @@\n \r\n import React, { useState } from 'react';\r\n import { \r\n   Bell, \r\n-  Check, \r\n-  Trash2, \r\n+  Check,\r\n+  Trash2,\r\n   CheckCheck,\r\n   Plus,\r\n   Edit,\r\n   StickyNote\r\n"
                 }
             ],
             "date": 1730204794742,
