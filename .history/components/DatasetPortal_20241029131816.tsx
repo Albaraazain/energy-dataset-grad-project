@@ -36,7 +36,6 @@ import {
 } from "@/lib/firebase/migration";
 import { useFirebase } from "@/contexts/FirebaseContext";
 import { useFirebaseOperations } from "@/hooks/useFirebaseOperations";
-import NotesDialog from "./NotesDialog";
 
 const iconMap = {
   Database,
@@ -50,10 +49,9 @@ const iconMap = {
 };
 
 // New component for expanded notes
-const ExpandedNotes: React.FC<{
-  notes: DatasetLink["notes"];
-  onEdit?: () => void;
-}> = ({ notes, onEdit }) => {
+const ExpandedNotes: React.FC<{ notes: DatasetLink["notes"] }> = ({
+  notes,
+}) => {
   if (!notes?.content) return null;
 
   return (
@@ -63,23 +61,11 @@ const ExpandedNotes: React.FC<{
           <StickyNote className="w-4 h-4" />
           <span>Notes</span>
         </div>
-        <div className="flex items-center gap-4">
-          {notes.lastUpdated && (
-            <span className="text-xs text-gray-500">
-              Updated {formatDistanceToNow(new Date(notes.lastUpdated))} ago
-            </span>
-          )}
-          {onEdit && (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={onEdit}
-              className="text-gray-400 hover:text-blue-400"
-            >
-              <Edit className="w-4 h-4" />
-            </Button>
-          )}
-        </div>
+        {notes.lastUpdated && (
+          <span className="text-xs text-gray-500">
+            Updated {formatDistanceToNow(new Date(notes.lastUpdated))} ago
+          </span>
+        )}
       </div>
       <div className="text-sm text-gray-300 whitespace-pre-wrap bg-gray-800 bg-opacity-50 rounded-lg p-3">
         {notes.content}

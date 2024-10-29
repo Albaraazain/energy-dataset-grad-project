@@ -36,7 +36,6 @@ import {
 } from "@/lib/firebase/migration";
 import { useFirebase } from "@/contexts/FirebaseContext";
 import { useFirebaseOperations } from "@/hooks/useFirebaseOperations";
-import NotesDialog from "./NotesDialog";
 
 const iconMap = {
   Database,

@@ -36,7 +36,6 @@ import {
 } from "@/lib/firebase/migration";
 import { useFirebase } from "@/contexts/FirebaseContext";
 import { useFirebaseOperations } from "@/hooks/useFirebaseOperations";
-import NotesDialog from "./NotesDialog";
 
 const iconMap = {
   Database,
@@ -50,10 +49,9 @@ const iconMap = {
 };
 
 // New component for expanded notes
-const ExpandedNotes: React.FC<{
-  notes: DatasetLink["notes"];
-  onEdit?: () => void;
-}> = ({ notes, onEdit }) => {
+const ExpandedNotes: React.FC<{ notes: DatasetLink["notes"] }> = ({
+  notes,
+}) => {
   if (!notes?.content) return null;
 
   return (
@@ -63,23 +61,11 @@ const ExpandedNotes: React.FC<{
           <StickyNote className="w-4 h-4" />
           <span>Notes</span>
         </div>
-        <div className="flex items-center gap-4">
-          {notes.lastUpdated && (
-            <span className="text-xs text-gray-500">
-              Updated {formatDistanceToNow(new Date(notes.lastUpdated))} ago
-            </span>
-          )}
-          {onEdit && (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={onEdit}
-              className="text-gray-400 hover:text-blue-400"
-            >
-              <Edit className="w-4 h-4" />
-            </Button>
-          )}
-        </div>
+        {notes.lastUpdated && (
+          <span className="text-xs text-gray-500">
+            Updated {formatDistanceToNow(new Date(notes.lastUpdated))} ago
+          </span>
+        )}
       </div>
       <div className="text-sm text-gray-300 whitespace-pre-wrap bg-gray-800 bg-opacity-50 rounded-lg p-3">
         {notes.content}
@@ -115,14 +101,6 @@ const DatasetPortal = () => {
   >();
   const [editingLink, setEditingLink] = useState<DatasetLink | undefined>();
   const [dialogMode, setDialogMode] = useState<"add" | "edit">("add");
-
-  const [isNotesDialogOpen, setIsNotesDialogOpen] = useState(false);
-  const [editingNotes, setEditingNotes] = useState<{
-    categoryId: string;
-    linkId: string;
-    notes: { content: string; lastUpdated: string };
-    linkTitle: string;
-  } | null>(null);
 
   // 4. Effects - all useEffect hooks need to be together
   useEffect(() => {
@@ -315,55 +293,6 @@ const DatasetPortal = () => {
     }
   };
 
-  const handleSaveNotes = async (updatedNotes: {
-    content: string;
-    lastUpdated: string;
-  }) => {
-    if (!editingNotes) return;
-
-    try {
-      const linkToUpdate = categories
-        .find((c) => c.id.toString() === editingNotes.categoryId)
-        ?.links.find((l) => l.id === editingNotes.linkId);
-
-      if (!linkToUpdate) return;
-
-      const updatedLink = {
-        ...linkToUpdate,
-        notes: updatedNotes,
-      };
-
-      const success = await updateLink(
-        editingNotes.categoryId,
-        editingNotes.linkId,
-        updatedLink
-      );
-
-      if (!success) {
-        alert("Failed to update notes. Please try again.");
-      }
-
-      setIsNotesDialogOpen(false);
-      setEditingNotes(null);
-    } catch (error) {
-      console.error("Error saving notes:", error);
-      alert("An error occurred while saving the notes.");
-    }
-  };
-
-  const handleEditNotes = (categoryId: string, link: DatasetLink) => {
-    setEditingNotes({
-      categoryId,
-      linkId: link.id,
-      notes: link.notes || {
-        content: "",
-        lastUpdated: new Date().toISOString(),
-      },
-      linkTitle: link.title,
-    });
-    setIsNotesDialogOpen(true);
-  };
-
   const getBadgeColor = (type: string) => {
     const colors = {
       ieee: "bg-blue-600",
@@ -551,118 +480,100 @@ const DatasetPortal = () => {
                 </Button>
               </div>
               <div className="space-y-4">
-                {categories
-                  .find((c) => c.id.toString() === selectedCategory)
-                  ?.links.map((link: DatasetLink, index: number) => {
-                    const isExpanded = expandedLinks.has(link.title);
-                    const hasNotes = !!link.notes?.content;
+              {categories
+    .find((c) => c.id.toString() === selectedCategory)
+    ?.links.map((link: DatasetLink, index: number) => {
+      const isExpanded = expandedLinks.has(link.title);
+      const hasNotes = !!link.notes?.content;
 
-                    return (
-                      <div
-                        key={index}
-                        className="group bg-white bg-opacity-5 rounded-xl transition-all duration-300 border border-white border-opacity-5 hover:border-blue-400 hover:border-opacity-30"
-                      >
-                        <div className="p-6">
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center space-x-4">
-                              <span className="text-lg text-gray-200 group-hover:text-blue-400 transition-colors">
-                                {link.title}
-                              </span>
-                              <Badge
-                                className={`${getBadgeColor(
-                                  link.type
-                                )} text-white`}
-                              >
-                                {link.type}
-                              </Badge>
-                              {hasNotes && !isExpanded && (
-                                <button
-                                  onClick={() =>
-                                    toggleLinkExpansion(link.title)
-                                  }
-                                  className="flex items-center gap-1 text-xs text-gray-400 hover:text-blue-400 transition-colors"
-                                >
-                                  <StickyNote className="w-3 h-3" />
-                                  <span>View notes</span>
-                                </button>
-                              )}
-                            </div>
-                            <div className="flex items-center space-x-2">
-                              {!isExpanded && (
-                                <Button
-                                  variant="ghost"
-                                  size="icon"
-                                  className="text-gray-400 hover:text-blue-400"
-                                  onClick={() =>
-                                    handleEditNotes(selectedCategory!, link)
-                                  }
-                                >
-                                  <StickyNote className="w-4 h-4" />
-                                </Button>
-                              )}
-                              {hasNotes && (
-                                <Button
-                                  variant="ghost"
-                                  size="icon"
-                                  className="text-gray-400 hover:text-blue-400"
-                                  onClick={() =>
-                                    toggleLinkExpansion(link.title)
-                                  }
-                                >
-                                  {isExpanded ? (
-                                    <ChevronUp className="w-4 h-4" />
-                                  ) : (
-                                    <ChevronDown className="w-4 h-4" />
-                                  )}
-                                </Button>
-                              )}
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                className="text-gray-400 hover:text-blue-400"
-                                onClick={() => handleEditLink(link)}
-                              >
-                                <Edit className="w-4 h-4" />
-                              </Button>
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                className="text-gray-400 hover:text-red-400"
-                                onClick={() =>
-                                  handleDeleteLink(selectedCategory!, link.id)
-                                }
-                              >
-                                <Trash2 className="w-4 h-4" />
-                              </Button>
-                              {link.url !== "#" && (
-                                <a
-                                  href={link.url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-gray-400 hover:text-blue-400"
-                                >
-                                  <ExternalLink className="w-4 h-4" />
-                                </a>
-                              )}
-                            </div>
-                          </div>
-                          {isExpanded && (
-                            <ExpandedNotes
-                              notes={link.notes}
-                              onEdit={() =>
-                                handleEditNotes(selectedCategory!, link)
-                              }
-                            />
-                          )}
-                        </div>
-                      </div>
-                    );
-                  })}
+      return (
+        <div
+          key={index}
+          className="group bg-white bg-opacity-5 rounded-xl transition-all duration-300 border border-white border-opacity-5 hover:border-blue-400 hover:border-opacity-30"
+        >
+          <div className="p-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-4">
+                <span className="text-lg text-gray-200 group-hover:text-blue-400 transition-colors">
+                  {link.title}
+                </span>
+                <Badge className={`${getBadgeColor(link.type)} text-white`}>
+                  {link.type}
+                </Badge>
+                {hasNotes && !isExpanded && (
+                  <button
+                    onClick={() => toggleLinkExpansion(link.title)}
+                    className="flex items-center gap-1 text-xs text-gray-400 hover:text-blue-400 transition-colors"
+                  >
+                    <StickyNote className="w-3 h-3" />
+                    <span>View notes</span>
+                  </button>
+                )}
               </div>
-            </CardContent>
-          </Card>
+              <div className="flex items-center space-x-2">
+                {!isExpanded && (
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="text-gray-400 hover:text-blue-400"
+                    onClick={() => handleEditNotes(selectedCategory!, link)}
+                  >
+                    <StickyNote className="w-4 h-4" />
+                  </Button>
+                )}
+                {hasNotes && (
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="text-gray-400 hover:text-blue-400"
+                    onClick={() => toggleLinkExpansion(link.title)}
+                  >
+                    {isExpanded ? (
+                      <ChevronUp className="w-4 h-4" />
+                    ) : (
+                      <ChevronDown className="w-4 h-4" />
+                    )}
+                  </Button>
+                )}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-gray-400 hover:text-blue-400"
+                  onClick={() => handleEditLink(link)}
+                >
+                  <Edit className="w-4 h-4" />
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-gray-400 hover:text-red-400"
+                  onClick={() => handleDeleteLink(selectedCategory!, link.id)}
+                >
+                  <Trash2 className="w-4 h-4" />
+                </Button>
+                {link.url !== "#" && (
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-blue-400"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                )}
+              </div>
+            </div>
+            {isExpanded && (
+              <ExpandedNotes 
+                notes={link.notes} 
+                onEdit={() => handleEditNotes(selectedCategory!, link)}
+              />
+            )}
+          </div>
         </div>
-      )}
+      );
+    })
+  }
 
       {/* Add NotesDialog */}
       <NotesDialog

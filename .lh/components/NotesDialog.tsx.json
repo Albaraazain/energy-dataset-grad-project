@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1730195648582,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730201374843,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,11 +18,11 @@\n   isOpen: boolean;\r\n   onClose: () => void;\r\n   onSave: (notes: { content: string; lastUpdated: string }) => void;\r\n   initialNotes?: {\r\n-    content: string;\r\n-    lastUpdated: string;\r\n-  };\r\n+    content?: string | null;\r\n+    lastUpdated?: string | null;\r\n+  } | null;\r\n   title: string;\r\n }\r\n \r\n const NotesDialog: React.FC<NotesDialogProps> = ({\r\n@@ -31,14 +31,15 @@\n   onSave,\r\n   initialNotes,\r\n   title,\r\n }) => {\r\n-  const [notes, setNotes] = useState(initialNotes?.content || \"\");\r\n+  const [notes, setNotes] = useState(\"\");\r\n   const [charCount, setCharCount] = useState(0);\r\n   const maxChars = 5000; // Maximum character limit\r\n \r\n   useEffect(() => {\r\n-    if (initialNotes) {\r\n+    // Safely handle initialNotes being undefined or null\r\n+    if (initialNotes?.content) {\r\n       setNotes(initialNotes.content);\r\n       setCharCount(initialNotes.content.length);\r\n     } else {\r\n       setNotes(\"\");\r\n"
                 }
             ],
             "date": 1730195648582,

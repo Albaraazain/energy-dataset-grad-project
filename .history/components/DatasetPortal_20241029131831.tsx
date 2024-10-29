@@ -36,7 +36,6 @@ import {
 } from "@/lib/firebase/migration";
 import { useFirebase } from "@/contexts/FirebaseContext";
 import { useFirebaseOperations } from "@/hooks/useFirebaseOperations";
-import NotesDialog from "./NotesDialog";
 
 const iconMap = {
   Database,
@@ -50,7 +49,7 @@ const iconMap = {
 };
 
 // New component for expanded notes
-const ExpandedNotes: React.FC<{
+const ExpandedNotes: React.FC<{ 
   notes: DatasetLink["notes"];
   onEdit?: () => void;
 }> = ({ notes, onEdit }) => {

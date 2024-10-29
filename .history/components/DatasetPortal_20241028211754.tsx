@@ -36,7 +36,6 @@ import {
 } from "@/lib/firebase/migration";
 import { useFirebase } from "@/contexts/FirebaseContext";
 import { useFirebaseOperations } from "@/hooks/useFirebaseOperations";
-import NotesDialog from "./NotesDialog";
 
 const iconMap = {
   Database,
@@ -50,10 +49,9 @@ const iconMap = {
 };
 
 // New component for expanded notes
-const ExpandedNotes: React.FC<{
-  notes: DatasetLink["notes"];
-  onEdit?: () => void;
-}> = ({ notes, onEdit }) => {
+const ExpandedNotes: React.FC<{ notes: DatasetLink["notes"] }> = ({
+  notes,
+}) => {
   if (!notes?.content) return null;
 
   return (
@@ -63,23 +61,11 @@ const ExpandedNotes: React.FC<{
           <StickyNote className="w-4 h-4" />
           <span>Notes</span>
         </div>
-        <div className="flex items-center gap-4">
-          {notes.lastUpdated && (
-            <span className="text-xs text-gray-500">
-              Updated {formatDistanceToNow(new Date(notes.lastUpdated))} ago
-            </span>
-          )}
-          {onEdit && (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={onEdit}
-              className="text-gray-400 hover:text-blue-400"
-            >
-              <Edit className="w-4 h-4" />
-            </Button>
-          )}
-        </div>
+        {notes.lastUpdated && (
+          <span className="text-xs text-gray-500">
+            Updated {formatDistanceToNow(new Date(notes.lastUpdated))} ago
+          </span>
+        )}
       </div>
       <div className="text-sm text-gray-300 whitespace-pre-wrap bg-gray-800 bg-opacity-50 rounded-lg p-3">
         {notes.content}
@@ -115,14 +101,6 @@ const DatasetPortal = () => {
   >();
   const [editingLink, setEditingLink] = useState<DatasetLink | undefined>();
   const [dialogMode, setDialogMode] = useState<"add" | "edit">("add");
-
-  const [isNotesDialogOpen, setIsNotesDialogOpen] = useState(false);
-  const [editingNotes, setEditingNotes] = useState<{
-    categoryId: string;
-    linkId: string;
-    notes: { content: string; lastUpdated: string };
-    linkTitle: string;
-  } | null>(null);
 
   // 4. Effects - all useEffect hooks need to be together
   useEffect(() => {
@@ -313,55 +291,6 @@ const DatasetPortal = () => {
       console.error("Error saving link:", error);
       alert("An error occurred while saving the link.");
     }
-  };
-
-  const handleSaveNotes = async (updatedNotes: {
-    content: string;
-    lastUpdated: string;
-  }) => {
-    if (!editingNotes) return;
-
-    try {
-      const linkToUpdate = categories
-        .find((c) => c.id.toString() === editingNotes.categoryId)
-        ?.links.find((l) => l.id === editingNotes.linkId);
-
-      if (!linkToUpdate) return;
-
-      const updatedLink = {
-        ...linkToUpdate,
-        notes: updatedNotes,
-      };
-
-      const success = await updateLink(
-        editingNotes.categoryId,
-        editingNotes.linkId,
-        updatedLink
-      );
-
-      if (!success) {
-        alert("Failed to update notes. Please try again.");
-      }
-
-      setIsNotesDialogOpen(false);
-      setEditingNotes(null);
-    } catch (error) {
-      console.error("Error saving notes:", error);
-      alert("An error occurred while saving the notes.");
-    }
-  };
-
-  const handleEditNotes = (categoryId: string, link: DatasetLink) => {
-    setEditingNotes({
-      categoryId,
-      linkId: link.id,
-      notes: link.notes || {
-        content: "",
-        lastUpdated: new Date().toISOString(),
-      },
-      linkTitle: link.title,
-    });
-    setIsNotesDialogOpen(true);
   };
 
   const getBadgeColor = (type: string) => {
@@ -588,18 +517,6 @@ const DatasetPortal = () => {
                               )}
                             </div>
                             <div className="flex items-center space-x-2">
-                              {!isExpanded && (
-                                <Button
-                                  variant="ghost"
-                                  size="icon"
-                                  className="text-gray-400 hover:text-blue-400"
-                                  onClick={() =>
-                                    handleEditNotes(selectedCategory!, link)
-                                  }
-                                >
-                                  <StickyNote className="w-4 h-4" />
-                                </Button>
-                              )}
                               {hasNotes && (
                                 <Button
                                   variant="ghost"
@@ -628,9 +545,7 @@ const DatasetPortal = () => {
                                 variant="ghost"
                                 size="icon"
                                 className="text-gray-400 hover:text-red-400"
-                                onClick={() =>
-                                  handleDeleteLink(selectedCategory!, link.id)
-                                }
+                                onClick={() => handleDeleteLink(link.title)}
                               >
                                 <Trash2 className="w-4 h-4" />
                               </Button>
@@ -646,14 +561,7 @@ const DatasetPortal = () => {
                               )}
                             </div>
                           </div>
-                          {isExpanded && (
-                            <ExpandedNotes
-                              notes={link.notes}
-                              onEdit={() =>
-                                handleEditNotes(selectedCategory!, link)
-                              }
-                            />
-                          )}
+                          {isExpanded && <ExpandedNotes notes={link.notes} />}
                         </div>
                       </div>
                     );
@@ -664,19 +572,7 @@ const DatasetPortal = () => {
         </div>
       )}
 
-      {/* Add NotesDialog */}
-      <NotesDialog
-        isOpen={isNotesDialogOpen}
-        onClose={() => {
-          setIsNotesDialogOpen(false);
-          setEditingNotes(null);
-        }}
-        onSave={handleSaveNotes}
-        initialNotes={editingNotes?.notes}
-        title={editingNotes?.linkTitle || ""}
-      />
-
-      {/* Keep existing dialogs */}
+      {/* Dialogs */}
       <CategoryDialog
         isOpen={isCategoryDialogOpen}
         onClose={() => setIsCategoryDialogOpen(false)}
