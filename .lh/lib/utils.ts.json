@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1730125270937,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730237222097,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n-import { type ClassValue, clsx } from \"clsx\"\r\n-import { twMerge } from \"tailwind-merge\"\r\n- \r\n+import { type ClassValue, clsx } from \"clsx\";\r\n+import { twMerge } from \"tailwind-merge\";\r\n+\r\n export function cn(...inputs: ClassValue[]) {\r\n-  return twMerge(clsx(inputs))\r\n+  return twMerge(clsx(inputs));\r\n }\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1730125270937,

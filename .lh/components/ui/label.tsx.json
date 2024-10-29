@@ -1,0 +1,18 @@
+{
+    "sourceFile": "components/ui/label.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1730237156567,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1730237156567,
+            "name": "Commit-0",
+            "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport * as LabelPrimitive from \"@radix-ui/react-label\";\r\nimport { cva, type VariantProps } from \"class-variance-authority\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nconst labelVariants = cva(\r\n  \"text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\"\r\n);\r\n\r\ninterface LabelProps\r\n  extends React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>,\r\n    VariantProps<typeof labelVariants> {\r\n  optional?: boolean;\r\n  error?: boolean;\r\n}\r\n\r\nconst Label = React.forwardRef<\r\n  React.ElementRef<typeof LabelPrimitive.Root>,\r\n  LabelProps\r\n>(({ className, children, optional, error, ...props }, ref) => (\r\n  <div className=\"flex flex-col space-y-1.5\">\r\n    <LabelPrimitive.Root\r\n      ref={ref}\r\n      className={cn(\r\n        labelVariants(),\r\n        error ? \"text-red-500\" : \"text-gray-200\",\r\n        className\r\n      )}\r\n      {...props}\r\n    >\r\n      <div className=\"flex items-center gap-2\">\r\n        <span>{children}</span>\r\n        {optional && (\r\n          <span className=\"text-xs font-normal text-gray-400\">(Optional)</span>\r\n        )}\r\n      </div>\r\n    </LabelPrimitive.Root>\r\n    {error && typeof error === 'string' && (\r\n      <p className=\"text-xs text-red-500\">{error}</p>\r\n    )}\r\n  </div>\r\n));\r\n\r\nLabel.displayName = LabelPrimitive.Root.displayName;\r\n\r\nexport { Label, labelVariants };"
+        }
+    ]
+}
