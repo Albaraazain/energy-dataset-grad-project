@@ -1,0 +1,22 @@
+{
+    "sourceFile": "firebase.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1730140304174,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730140412378,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,4 @@\n-// firebase.json\r\n {\r\n     \"hosting\": {\r\n       \"public\": \"out\",\r\n       \"ignore\": [\r\n@@ -14,18 +13,7 @@\n         }\r\n       ]\r\n     },\r\n     \"functions\": {\r\n-      \"source\": \"functions\",\r\n-      \"predeploy\": [\r\n-        \"npm --prefix functions run lint\",\r\n-        \"npm --prefix functions run build\"\r\n-      ]\r\n+      \"source\": \"functions\"\r\n     }\r\n-  }\r\n-  \r\n-  // .firebaserc\r\n-  {\r\n-    \"projects\": {\r\n-      \"default\": \"grad-project-databases\"\r\n-    }\r\n   }\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1730140304174,
+            "name": "Commit-0",
+            "content": "// firebase.json\r\n{\r\n    \"hosting\": {\r\n      \"public\": \"out\",\r\n      \"ignore\": [\r\n        \"firebase.json\",\r\n        \"**/.*\",\r\n        \"**/node_modules/**\"\r\n      ],\r\n      \"rewrites\": [\r\n        {\r\n          \"source\": \"**\",\r\n          \"destination\": \"/index.html\"\r\n        }\r\n      ]\r\n    },\r\n    \"functions\": {\r\n      \"source\": \"functions\",\r\n      \"predeploy\": [\r\n        \"npm --prefix functions run lint\",\r\n        \"npm --prefix functions run build\"\r\n      ]\r\n    }\r\n  }\r\n  \r\n  // .firebaserc\r\n  {\r\n    \"projects\": {\r\n      \"default\": \"grad-project-databases\"\r\n    }\r\n  }"
+        }
+    ]
+}

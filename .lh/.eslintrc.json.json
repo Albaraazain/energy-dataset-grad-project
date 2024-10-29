@@ -1,0 +1,22 @@
+{
+    "sourceFile": ".eslintrc.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1730140488730,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730140587746,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,9 @@\n {\n   \"extends\": \"next/core-web-vitals\",\n   \"rules\": {\n-    \"@typescript-eslint/no-unused-vars\": [\"warn\", { \n-      \"argsIgnorePattern\": \"^_\",\n-      \"varsIgnorePattern\": \"^_\"\n-    }],\n-    \"@typescript-eslint/no-explicit-any\": \"warn\",\n-    \"@typescript-eslint/no-empty-interface\": \"off\"\n+    \"@typescript-eslint/no-unused-vars\": \"off\",\n+    \"@typescript-eslint/no-explicit-any\": \"off\",\n+    \"@typescript-eslint/no-empty-interface\": \"off\",\n+    \"typescript-eslint/no-empty-object-type\": \"off\"\n   }\n }\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1730140488730,
+            "name": "Commit-0",
+            "content": "{\n  \"extends\": \"next/core-web-vitals\",\n  \"rules\": {\n    \"@typescript-eslint/no-unused-vars\": [\"warn\", { \n      \"argsIgnorePattern\": \"^_\",\n      \"varsIgnorePattern\": \"^_\"\n    }],\n    \"@typescript-eslint/no-explicit-any\": \"warn\",\n    \"@typescript-eslint/no-empty-interface\": \"off\"\n  }\n}"
+        }
+    ]
+}

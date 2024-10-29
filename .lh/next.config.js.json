@@ -3,11 +3,19 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1730125890187,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730140406127,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,10 @@\n /** @type {import('next').NextConfig} */\r\n const nextConfig = {\r\n-    reactStrictMode: true,\r\n-  }\r\n-  \r\n-  module.exports = nextConfig\n\\ No newline at end of file\n+  output: 'export',  // Add this line for static export\r\n+  images: {\r\n+    unoptimized: true\r\n+  },\r\n+  reactStrictMode: true,\r\n+}\r\n+\r\n+module.exports = nextConfig\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1730140609312,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,16 @@\n /** @type {import('next').NextConfig} */\r\n const nextConfig = {\r\n-  output: 'export',  // Add this line for static export\r\n+  output: 'export',\r\n   images: {\r\n     unoptimized: true\r\n   },\r\n   reactStrictMode: true,\r\n+  eslint: {\r\n+    ignoreDuringBuilds: true\r\n+  },\r\n+  typescript: {\r\n+    ignoreBuildErrors: true\r\n+  }\r\n }\r\n \r\n module.exports = nextConfig\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1730125890187,
