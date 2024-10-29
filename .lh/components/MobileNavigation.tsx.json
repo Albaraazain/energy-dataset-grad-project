@@ -1,0 +1,18 @@
+{
+    "sourceFile": "components/MobileNavigation.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1730236470116,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1730236470116,
+            "name": "Commit-0",
+            "content": "import React, { useState } from 'react';\r\nimport { Menu, X, Plus, Bell } from 'lucide-react';\r\nimport { Button } from '@/components/ui/button';\r\nimport NotificationMenu from './NotificationMenu';\r\nimport {\r\n  Sheet,\r\n  SheetContent,\r\n  SheetHeader,\r\n  SheetTitle,\r\n  SheetTrigger,\r\n} from \"@/components/ui/sheet\";\r\n\r\nconst MobileNavigation = ({ \r\n  onAddCategory \r\n}: { \r\n  onAddCategory: () => void \r\n}) => {\r\n  const [isOpen, setIsOpen] = useState(false);\r\n\r\n  return (\r\n    <div className=\"lg:hidden\">\r\n      <div className=\"fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm border-b border-gray-800\">\r\n        <div className=\"flex items-center justify-between px-4 h-16\">\r\n          {/* Mobile Menu Trigger */}\r\n          <Sheet>\r\n            <SheetTrigger asChild>\r\n              <Button variant=\"ghost\" size=\"icon\" className=\"text-gray-400\">\r\n                <Menu className=\"h-6 w-6\" />\r\n              </Button>\r\n            </SheetTrigger>\r\n            <SheetContent side=\"left\" className=\"w-80 bg-gray-900 text-white border-r border-gray-800\">\r\n              <SheetHeader>\r\n                <SheetTitle className=\"text-white\">Energy Dataset Portal</SheetTitle>\r\n              </SheetHeader>\r\n              <div className=\"mt-8 space-y-4\">\r\n                <Button \r\n                  onClick={() => {\r\n                    onAddCategory();\r\n                    setIsOpen(false);\r\n                  }}\r\n                  className=\"w-full bg-blue-600 hover:bg-blue-700 text-white\"\r\n                >\r\n                  <Plus className=\"w-4 h-4 mr-2\" /> Add Category\r\n                </Button>\r\n                {/* Add more navigation items here */}\r\n              </div>\r\n            </SheetContent>\r\n          </Sheet>\r\n\r\n          {/* Center Logo/Title */}\r\n          <h1 className=\"text-lg font-semibold text-white\">Energy Dataset</h1>\r\n\r\n          {/* Right Side Actions */}\r\n          <div className=\"flex items-center space-x-2\">\r\n            <NotificationMenu />\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      {/* Spacer to prevent content from hiding under fixed header */}\r\n      <div className=\"h-16\" />\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default MobileNavigation;"
+        }
+    ]
+}
